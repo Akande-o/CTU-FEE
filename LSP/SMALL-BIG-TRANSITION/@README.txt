@@ -1,0 +1,59 @@
+------------------------------
+List of files
+------------------------------
+Demo_LCD.bdf, Demo_LCD0.bdf- the schemas for downloading to DE2-115
+DisplayLogic0.vhd - city label, the first step without ROM romPicture
+DisplayLogic.vhd - city label with added ROM romPicture
+romPicture.mif - the content of ROM
+romPicture.qip,romPicture.vhd - files created by Tools->MegaWizard Plug-In Manager
+
+lcd_display.sdc - time guest definitions for LCD
+VGApackage.vhd - basic constants and functions for VGA and LCD
+LCDpackage.vhd - it adds only 2 constants, the sizes of LCD, it is nor necessary
+
+LCDgenerator.vhd - the generator of LCD signal
+LCDRegDE2_115.vhd - the output register after DisplayLogic2 for DE2-115 board
+LCD_altpll.qip, LCD_altpll.vhd - phase locked loop necessary for LCD genrator
+
+testbench_DisplayLogic.vhd - *** you can run this file only in ModelSim, 
+        but do not forget also to copy romPicture.mif ton ModelSim project!
+VGAgenerator.vhd, VGARegDE2.vhd,  - files used in testbench
+
+VGARegDE2_115.vhd - for direct output do VGA connector of the DE2-115 board in case of VGAgenerator.vhd 
+VGAtiming.sdc - in case of the usage of VGA output
+
+-- Inspiration for 3rd task
+DisplayLogic02.vhd - city label 640x480, the first step without ROM romPicture2
+DisplayLogic2.vhd - city label 640x480 with added ROM romPicture2
+
+
+
+************************************************************
+*** Important Warning ***
+************************************************************
+
+The LCD display uses a Video Decoder chip on the board, so the circuit comes out simple.
+Its pins have quite complex names, so aliases have been created.
+
+!!! In demo, the project has already correct configuration, 
+but if you create your own project, you must add the following files:
+
+LCDgenerator, LCDRegDE2_115.vhd, LCDpackage, LCD_altpll.qip, lcd_display.sdc
+
+Then, you need to import new pin assignments into empty pin list !!!
+
+1/ Quartus menu: Assignments->Remove Assignments 
+            + select * Pin, Location & Routing Assignments
+		               * Fitter Assignments
+			    Nothing else, and [Ok]
+				 
+2/ Assignments->Assignments Editor should show empty list, the requirement for importing aliases!
+		      
+3/ Quartus menu: Assignments->Import Assignments...
+   and select DE2_115_lcd_pin_assignments.csv.
+	Ignore error message that some part of the assignments has been ignored.
+	
+The file is identical with the original DE2_115_pin_assignments.csv, 
+except for adding aliases at begining for several pins of the Video decoder.
+
++++ Do not also forget to add lcd_display.sdc by Assignments->Settings->TimeQuest Timing Analyzer

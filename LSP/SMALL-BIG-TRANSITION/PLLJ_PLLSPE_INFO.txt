@@ -1,0 +1,5 @@
+PLL_Name	LCDgenerator:iGen|LCD_altpll:ipll|altpll:altpll_component|LCD_altpll_altpll:auto_generated|pll1
+PLLJITTER	17
+PLLSPEmax	84
+PLLSPEmin	-53
+
