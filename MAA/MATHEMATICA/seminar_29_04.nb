@@ -1,0 +1,446 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     14827,        438]
+NotebookOptionsPosition[     14217,        421]
+NotebookOutlinePosition[     14590,        437]
+CellTagsIndexPosition[     14547,        434]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"$HistoryLength", "=", "3"}], 
+  ";"}], "\[IndentingNewLine]"}], "Input",
+ CellLabel->
+  "In[1085]:=",ExpressionUUID->"ac9abc2d-cbef-4646-865b-a18fb76b9c96"],
+
+Cell[BoxData[{
+ RowBox[{"Nest", "[", 
+  RowBox[{"f", ",", "x0", ",", "5"}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"NestList", "[", 
+  RowBox[{"f", ",", "x0", ",", "5"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.8286825607367435`*^9, 3.8286825625146933`*^9}, {
+  3.828683273347685*^9, 3.8286833561205416`*^9}},
+ CellLabel->
+  "In[1224]:=",ExpressionUUID->"de93b77b-cc53-421c-bd59-03e289bb2d45"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"derivative", "[", 
+    RowBox[{"{", 
+     RowBox[{"t_", ",", "y_"}], "}"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"-", "y"}], "+", 
+    RowBox[{"Sin", "[", 
+     RowBox[{"8", "t"}], "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"tStart", "=", "0."}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"yStart", "=", "10."}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"initialPoint", "=", 
+   RowBox[{"{", 
+    RowBox[{"tStart", ",", "yStart"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"eqnForDSolve", "=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"y", "'"}], "[", "t", "]"}], "\[Equal]", 
+    RowBox[{"derivative", "[", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", 
+       RowBox[{"y", "[", "t", "]"}]}], "}"}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"initialForDSolve", "=", 
+   RowBox[{
+    RowBox[{"y", "[", "tStart", "]"}], "\[Equal]", "yStart"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"solDSolve", "=", 
+   RowBox[{
+    RowBox[{"DSolve", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"eqnForDSolve", ",", "initialForDSolve"}], "}"}], ",", 
+      RowBox[{"y", "[", "t", "]"}], ",", "t"}], "]"}], "[", 
+    RowBox[{"[", "1", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"tmax", "=", "3"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"plotDSolve", "=", 
+    RowBox[{"Plot", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"y", "[", "t", "]"}], "/.", "solDSolve"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"t", ",", "tStart", ",", "tmax"}], "}"}], ",", 
+      RowBox[{"AxesLabel", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"\"\<t\>\"", ",", "\"\<y[t]\>\""}], "}"}]}]}], "]"}]}], ";"}],
+   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"nSteps", "=", 
+   StyleBox["5",
+    FontColor->RGBColor[1, 0, 0]]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[CapitalDelta]t", "=", 
+   FractionBox[
+    RowBox[{"tmax", "-", "tStart"}], "nSteps"]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"stepEuler", "[", 
+    RowBox[{"{", 
+     RowBox[{"t_", ",", "y_"}], "}"}], "]"}], ":=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"t", "+", "\[CapitalDelta]t"}], ",", 
+     RowBox[{"y", "+", 
+      RowBox[{"\[CapitalDelta]t", "*", 
+       RowBox[{"derivative", "[", 
+        RowBox[{"{", 
+         RowBox[{"t", ",", "y"}], "}"}], "]"}]}]}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"solEuler", "=", 
+   RowBox[{"NestList", "[", 
+    RowBox[{"stepEuler", ",", "initialPoint", ",", "nSteps"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"plotEuler", "=", 
+   RowBox[{"ListPlot", "[", 
+    RowBox[{"solEuler", ",", 
+     RowBox[{"PlotStyle", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"Red", ",", 
+        RowBox[{"PointSize", "[", "0.015", "]"}]}], "}"}]}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"Show", "[", 
+    RowBox[{"plotDSolve", ",", "plotEuler"}], "]"}], ";"}], 
+  "\[IndentingNewLine]"}], "\n", 
+ RowBox[{
+  RowBox[{"ClearAll", "[", "RungeKuttaStep", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"RungeKuttaStep", "[", 
+    RowBox[{"{", 
+     RowBox[{"t_", ",", "y_"}], "}"}], "]"}], ":=", 
+   RowBox[{"Module", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"k1", ",", "k2", ",", "k3", ",", "k4"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"k1", "=", 
+       RowBox[{"derivative", "[", 
+        RowBox[{"{", 
+         RowBox[{"t", ",", "y"}], "}"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"k2", "=", 
+       RowBox[{"derivative", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"t", "+", 
+           FractionBox["\[CapitalDelta]t", "2"]}], ",", 
+          RowBox[{"y", "+", 
+           RowBox[{
+            FractionBox["\[CapitalDelta]t", "2"], "*", "k1"}]}]}], "}"}], 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"k3", "=", 
+       RowBox[{"derivative", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"t", "+", 
+           FractionBox["\[CapitalDelta]t", "2"]}], ",", 
+          RowBox[{"y", "+", 
+           RowBox[{
+            FractionBox["\[CapitalDelta]t", "2"], "*", "k2"}]}]}], "}"}], 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"k4", "=", 
+       RowBox[{"derivative", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"t", "+", "\[CapitalDelta]t"}], ",", 
+          RowBox[{"y", "+", 
+           RowBox[{"\[CapitalDelta]t", "*", "k3"}]}]}], "}"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"t", "+", "\[CapitalDelta]t"}], ",", 
+        RowBox[{"y", "+", 
+         RowBox[{
+          FractionBox["\[CapitalDelta]t", "6"], "*", 
+          RowBox[{"(", 
+           RowBox[{"k1", "+", 
+            RowBox[{"2", "k2"}], "+", 
+            RowBox[{"2", "k3"}], "+", "k4"}], ")"}]}]}]}], "}"}]}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"solRunge", "=", 
+   RowBox[{"NestList", "[", 
+    RowBox[{"RungeKuttaStep", ",", "initialPoint", ",", "nSteps"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"plotRunge", "=", 
+   RowBox[{"ListPlot", "[", 
+    RowBox[{"solRunge", ",", 
+     RowBox[{"PlotStyle", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"Black", ",", 
+        RowBox[{"PointSize", "[", "0.015", "]"}]}], "}"}]}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Show", "[", 
+  RowBox[{"plotDSolve", ",", "plotEuler", ",", "plotRunge"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.8286819369108486`*^9, 3.828681937296008*^9}, {
+  3.828682492621708*^9, 3.828682556029316*^9}, {3.82868260189436*^9, 
+  3.8286827661964426`*^9}, {3.828682798802847*^9, 3.8286828009561443`*^9}, {
+  3.8286828397581487`*^9, 3.8286828973641453`*^9}, {3.828683049503237*^9, 
+  3.828683087578741*^9}, {3.8286831207189765`*^9, 3.828683261934898*^9}, {
+  3.8286834201237946`*^9, 3.828683454933262*^9}, {3.828683509030553*^9, 
+  3.8286836841286206`*^9}, {3.8286837282973013`*^9, 3.828683743697914*^9}, {
+  3.828684655703776*^9, 3.828684693267686*^9}},
+ CellLabel->
+  "In[1460]:=",ExpressionUUID->"707eb494-54fd-4876-8b65-2eff0bc56cd1"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ClearAll", "[", "\"\<Global`*\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"eqnsDSolve", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{"x1", "'"}], "[", "t", "]"}], "\[Equal]", 
+      RowBox[{"x2", "[", "t", "]"}]}], ",", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"x2", "'"}], "[", "t", "]"}], "\[Equal]", 
+      RowBox[{
+       RowBox[{"Sin", "[", 
+        RowBox[{"3", "t"}], "]"}], "-", 
+       RowBox[{"2", 
+        RowBox[{"x2", "[", "t", "]"}]}], "-", 
+       RowBox[{"x1", "[", "t", "]"}]}]}], ",", 
+     RowBox[{
+      RowBox[{"x1", "[", "0", "]"}], "\[Equal]", "1"}], ",", 
+     RowBox[{
+      RowBox[{"x2", "[", "0", "]"}], "\[Equal]", "0"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"solDSolve", "=", 
+   RowBox[{
+    RowBox[{"DSolve", "[", 
+     RowBox[{"eqnsDSolve", ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"x1", "[", "t", "]"}], ",", 
+        RowBox[{"x2", "[", "t", "]"}]}], "}"}], ",", "t"}], "]"}], "[", 
+    RowBox[{"[", "1", "]"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"solDS2", "=", 
+   RowBox[{"DSolve", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"y", "''"}], "[", "t", "]"}], "+", 
+         RowBox[{"2", 
+          RowBox[{
+           RowBox[{"y", "'"}], "[", "t", "]"}]}], "+", 
+         RowBox[{"y", "[", "t", "]"}]}], "\[Equal]", 
+        RowBox[{"Sin", "[", 
+         RowBox[{"3", "t"}], "]"}]}], ",", 
+       RowBox[{
+        RowBox[{"y", "[", "0", "]"}], "\[Equal]", "1"}], ",", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"y", "'"}], "[", "0", "]"}], "\[Equal]", "0"}]}], "}"}], ",", 
+     RowBox[{"y", "[", "t", "]"}], ",", "t"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"tmax", "=", "10."}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"plotDS", "=", 
+   RowBox[{"Plot", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"x1", "[", "t", "]"}], "/.", "solDSolve"}], ",", 
+       RowBox[{
+        RowBox[{"y", "[", "t", "]"}], "/.", "solDS2"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"t", ",", "0", ",", "tmax"}], "}"}], ",", 
+     RowBox[{"PlotStyle", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"Red", ",", 
+        RowBox[{"{", 
+         RowBox[{"Dashed", ",", "Black"}], "}"}]}], "}"}]}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"derivative", "[", 
+    RowBox[{"{", 
+     RowBox[{"t_", ",", 
+      RowBox[{"{", 
+       RowBox[{"x1_", ",", "x2_"}], "}"}]}], "}"}], "]"}], ":=", 
+   RowBox[{"{", 
+    RowBox[{"x2", ",", 
+     RowBox[{
+      RowBox[{"Sin", "[", 
+       RowBox[{"3", "t"}], "]"}], "-", 
+      RowBox[{"2", "x2"}], "-", "x1"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"nSteps", "=", "15"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[CapitalDelta]t", "=", 
+   FractionBox[
+    RowBox[{"tmax", "-", "0."}], "nSteps"]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"initialPoint", "=", 
+   RowBox[{"{", 
+    RowBox[{"0.", ",", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0"}], "}"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ClearAll", "[", "RungeKuttaStep", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"RungeKuttaStep", "[", 
+    RowBox[{"{", 
+     RowBox[{"t_", ",", "y_"}], "}"}], "]"}], ":=", 
+   RowBox[{"Module", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"k1", ",", "k2", ",", "k3", ",", "k4"}], "}"}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"k1", "=", 
+       RowBox[{"derivative", "[", 
+        RowBox[{"{", 
+         RowBox[{"t", ",", "y"}], "}"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"k2", "=", 
+       RowBox[{"derivative", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"t", "+", 
+           FractionBox["\[CapitalDelta]t", "2"]}], ",", 
+          RowBox[{"y", "+", 
+           RowBox[{
+            FractionBox["\[CapitalDelta]t", "2"], "*", "k1"}]}]}], "}"}], 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"k3", "=", 
+       RowBox[{"derivative", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"t", "+", 
+           FractionBox["\[CapitalDelta]t", "2"]}], ",", 
+          RowBox[{"y", "+", 
+           RowBox[{
+            FractionBox["\[CapitalDelta]t", "2"], "*", "k2"}]}]}], "}"}], 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"k4", "=", 
+       RowBox[{"derivative", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"t", "+", "\[CapitalDelta]t"}], ",", 
+          RowBox[{"y", "+", 
+           RowBox[{"\[CapitalDelta]t", "*", "k3"}]}]}], "}"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"t", "+", "\[CapitalDelta]t"}], ",", 
+        RowBox[{"y", "+", 
+         RowBox[{
+          FractionBox["\[CapitalDelta]t", "6"], "*", 
+          RowBox[{"(", 
+           RowBox[{"k1", "+", 
+            RowBox[{"2", "k2"}], "+", 
+            RowBox[{"2", "k3"}], "+", "k4"}], ")"}]}]}]}], "}"}]}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"solRunge", "=", 
+   RowBox[{"NestList", "[", 
+    RowBox[{"RungeKuttaStep", ",", "initialPoint", ",", "nSteps"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"plotRunge", "=", 
+   RowBox[{"ListPlot", "[", 
+    RowBox[{
+     RowBox[{"solRunge", "/.", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"t_", ",", 
+         RowBox[{"{", 
+          RowBox[{"x1_", ",", "x2_"}], "}"}]}], "}"}], "\[RuleDelayed]", 
+       RowBox[{"{", 
+        RowBox[{"t", ",", "x1"}], "}"}]}]}], ",", 
+     RowBox[{"PlotStyle", "\[Rule]", 
+      RowBox[{"{", 
+       RowBox[{"Black", ",", 
+        RowBox[{"PointSize", "[", "0.015", "]"}]}], "}"}]}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Show", "[", 
+  RowBox[{"plotDS", ",", "plotRunge"}], 
+  "]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.8286852479891353`*^9, 3.828685337108157*^9}, {
+  3.8286853672371473`*^9, 3.8286855881350503`*^9}, {3.828685628438426*^9, 
+  3.828685839436726*^9}, {3.8286858745666523`*^9, 3.828686054766054*^9}, {
+  3.8292879355179014`*^9, 3.829287943167515*^9}, {3.829288055627695*^9, 
+  3.8292880564846277`*^9}},ExpressionUUID->"6e8d5176-5623-4e7c-a4da-\
+0f05e7f38fb9"]
+},
+WindowSize->{1366, 685},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+Magnification:>1.6 Inherited,
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 417, 12, 136, "Input",ExpressionUUID->"ac9abc2d-cbef-4646-865b-a18fb76b9c96"],
+Cell[978, 34, 394, 8, 76, "Input",ExpressionUUID->"de93b77b-cc53-421c-bd59-03e289bb2d45"],
+Cell[1375, 44, 6354, 181, 1053, "Input",ExpressionUUID->"707eb494-54fd-4876-8b65-2eff0bc56cd1"],
+Cell[7732, 227, 6481, 192, 873, "Input",ExpressionUUID->"6e8d5176-5623-4e7c-a4da-0f05e7f38fb9"]
+}
+]
+*)
+

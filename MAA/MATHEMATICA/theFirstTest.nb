@@ -1,0 +1,79 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      2545,         71]
+NotebookOptionsPosition[      2126,         56]
+NotebookOutlinePosition[      2501,         72]
+CellTagsIndexPosition[      2458,         69]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[TextData[{
+ "\nSolve a system of linear equations with the parameter a.\nUse Print to \
+print the x and y values for the value of the parameter a = pi. \nequations: \
+a*x+y=\[Pi], x+\[Pi]*y=1.\nUse Plot to create a graph showing the expression ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["x", "2"], TraditionalForm]],ExpressionUUID->
+  "c1235e3a-f414-42f7-a4ad-a8a1a88d3f5d"],
+ " + ",
+ Cell[BoxData[
+  FormBox[
+   SuperscriptBox["y", "2"], TraditionalForm]],ExpressionUUID->
+  "f1d954ea-7ee9-4d74-a487-eb320cdb9400"],
+ " as a function of a for 0.5 <a <1, AxesLabel, GridLines. Let the line be \
+red and thick.\n"
+}], "Text",
+ CellChangeTimes->{{3.8280621280431614`*^9, 3.828062216917136*^9}, {
+   3.828062347554607*^9, 3.8280623487520094`*^9}, {3.828062547007581*^9, 
+   3.828062568153745*^9}, {3.828063015836666*^9, 3.8280630187618804`*^9}, 
+   3.8280630601438637`*^9, {3.8280775952730827`*^9, 
+   3.828077609494399*^9}},ExpressionUUID->"5ca6f794-6e39-4d0a-a5f9-\
+cea15295f9e7"],
+
+Cell["\<\
+Solve the differential equation y\[CloseCurlyQuote](t)+(t+1)*y(t)=t with the \
+initial condition y(0)=0.
+Use Plot to create a graph showing the expression x + y as a function of t \
+for 0 <t <15, AxesLabel, GridLines. Let the line be red and thick.
+Find the value t0 for which y (t0) = 0.6 and display the result with Print. 
+\
+\>", "Text",
+ CellChangeTimes->{{3.82806258001373*^9, 3.828062588788375*^9}, {
+  3.828062945542716*^9, 3.8280630060046444`*^9}, {3.828063068269682*^9, 
+  3.8280630694357553`*^9}},ExpressionUUID->"9702eab4-478e-4967-b03f-\
+0fc31c90d6e3"]
+},
+WindowSize->{1106, 709},
+WindowMargins->{{Automatic, 109}, {Automatic, 360}},
+Magnification:>1.6 Inherited,
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 987, 21, 270, "Text",ExpressionUUID->"5ca6f794-6e39-4d0a-a5f9-cea15295f9e7"],
+Cell[1548, 43, 574, 11, 199, "Text",ExpressionUUID->"9702eab4-478e-4967-b03f-0fc31c90d6e3"]
+}
+]
+*)
+
