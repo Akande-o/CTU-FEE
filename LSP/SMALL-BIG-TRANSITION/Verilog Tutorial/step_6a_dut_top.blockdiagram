@@ -1,0 +1,66 @@
+// This file controls how the block diagram of module `dut_top` is rendered.
+
+// TODO Minimize the Project Explorer, Outline and Hierarchy windows 
+//      to make more space for the editor and the block diagram
+
+// TODO The goal of this graphics configuration file is to make the
+//      block diagram look nicer and easier to understand.
+//      Check the effect of each step on the block diagram.
+//
+//      Right-click on dut_top below and select **Show In > Block Diagram**
+
+diagram work.dut_top {
+	// TODO "Remove reassignments"
+	//      The reassignments in `size_x` and `size_y` don't add much information
+	//      and one may prefer to hide them. Uncomment the following line to do so.
+	//      (select the line and press **Ctrl+/** or **Ctrl+Shift+C**)
+
+//	reassignments hide
+
+	// TODO "Group wires into a bus"
+	//      Note the eight connections between modules `pixelbuffer` and `dut_core`.
+	//      Uncomment the following line to group these connections
+
+//	def wire group pixelwindow (regex"pixel_[pm0][pm0]")
+	
+	// TODO "Group sub-blocks logically"
+	//      Modules `dut_engine` and the counters together form the controller of
+	//      datapath `dut_core`. Uncomment the following line to group the 
+	//      controller parts together.
+	//      If the `dut_engine_instance` block is missing, make sure that in 
+	//      `step_2_dut_top.sv` the "Autocomplete instance" part was done.
+//	def block group controller (regex"counter.*", dut_engine_instance)
+	
+	// TODO "Add colors"
+	//      Blocks and wires can be highlighted using colors to improve clarity.
+	//      Select and uncomment (**Ctrl+/**) the next 12 lines for an example.
+	
+//	block controller {
+//		color green
+//		block dut_engine_instance {
+//			color blue
+//		}
+//		block regex"counter.*" {
+//			color blue
+//		}
+//	}
+//	wire pixelwindow {
+//		color red
+//	}
+	
+	// TODO "Collapse block"
+	//      Finally, one can collapse a block i.e. hide its contents.
+	//      Uncomment the next 3 lines to collapse the controller block.
+	
+//	block controller {
+//		collapse
+//	}
+	
+	// TODO "Save file"
+	//      Press **Ctrl+S** to save the current file.
+	//      Restore the working environment by right-clicking the Sigasi icon in the
+	//      far top-right corner, click **reset** and confirm to reset the Sigasi
+	//      perspective to its default.
+	//
+	//      Return to `step_6_image_testbench.sv` by clicking its tab above the editor.
+}

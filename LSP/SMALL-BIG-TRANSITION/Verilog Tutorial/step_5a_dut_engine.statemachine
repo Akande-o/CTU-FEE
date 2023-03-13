@@ -1,0 +1,47 @@
+// This file configures how the state machine from the `dut_engine` is rendered.
+// Check Sigasi Studio's manual for additional information on graphics configuration 
+// https://insights.sigasi.com/manual/graphics/
+//
+// TODO feel free to edit this file e.g. change colors and note that the 
+//      state diagram changes as you type. Scroll down in this file for
+//      further instructions
+statemachine work.dut_engine : ^state {
+	
+	// State grouping
+
+	// Group associtated states together
+	def state group startup (startup_row1, startup_row2)
+	def state group finish (finish_row_1, finish_row_2)
+	// Groups of states can be included in groups as well, building a hierarchy
+	def state group running (startup, calculate, finish)
+	
+	// Colour an individual state	
+	state waiting { color green }
+	
+	// Add color to the hierarchy
+	state running {
+		color orange
+		state calculate { color yellow }
+		state startup {
+			// Collapse a group of states
+			// TODO put the next line in comments (place cursor and press
+			//      **Ctrl+Shift+C** or **Ctrl+/**) and check the effect on the state diagram
+			collapse
+			color yellow
+			state startup_row1 {color purple}
+			state startup_row2 {color gray}
+		}
+		state finish {
+			color aqua
+			state finish_row_1 {color yellow}
+			state finish_row_2 {color yellow}
+		}
+		// TODO "Export the State Diagram"
+		//      Click on **Export image** ("floppy disk") icon above the state diagram.
+		//      Export the image as either a PNG or SVG image.
+		//
+		//      Close the State Machines view.
+		//      In the project Explorer, open file `step_6_image_testbench.sv`
+		//      to continue the tutorial.
+	}
+}
