@@ -1,0 +1,160 @@
+|Morse
+M <= BeaconAE:inst.M
+CLK => counter8bits:inst2.CLK
+KEY[0] => counter8bits:inst2.ACLRN
+MS <= BeaconAEs:inst1.M
+
+
+|Morse|BeaconAE:inst
+A => M~0.IN0
+B => M~1.IN0
+C => M~1.IN1
+D => M~0.IN1
+M <= M~2.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Morse|counter8bits:inst2
+Q0 <= register8bits:inst1.Q0
+CLK => register8bits:inst1.CLK
+ENA => register8bits:inst1.ENA
+RESET => register8bits:inst1.RESET
+ACLRN => register8bits:inst1.ACLRN
+Q1 <= register8bits:inst1.Q1
+Q2 <= register8bits:inst1.Q2
+Q3 <= register8bits:inst1.Q3
+Q4 <= register8bits:inst1.Q4
+Q5 <= register8bits:inst1.Q5
+Q6 <= register8bits:inst1.Q6
+Q7 <= register8bits:inst1.Q7
+
+
+|Morse|counter8bits:inst2|register8bits:inst1
+Q0 <= register4bits:inst.Q0
+D0 => register4bits:inst.D0
+D1 => register4bits:inst.D1
+D2 => register4bits:inst.D2
+D3 => register4bits:inst.D3
+CLK => register4bits:inst.CLK
+CLK => register4bits:inst1.CLK
+ENA => register4bits:inst.ENA
+ENA => register4bits:inst1.ENA
+RESET => register4bits:inst.RESET
+RESET => register4bits:inst1.RESET
+ACLRN => register4bits:inst.ACLRN
+ACLRN => register4bits:inst1.ACLRN
+Q1 <= register4bits:inst.Q1
+Q2 <= register4bits:inst.Q2
+Q3 <= register4bits:inst.Q3
+Q4 <= register4bits:inst1.Q0
+D4 => register4bits:inst1.D0
+D5 => register4bits:inst1.D1
+D6 => register4bits:inst1.D2
+D7 => register4bits:inst1.D3
+Q5 <= register4bits:inst1.Q1
+Q6 <= register4bits:inst1.Q2
+Q7 <= register4bits:inst1.Q3
+
+
+|Morse|counter8bits:inst2|register8bits:inst1|register4bits:inst
+Q0 <= inst.DB_MAX_OUTPUT_PORT_TYPE
+ACLRN => inst.ACLR
+ACLRN => inst8.ACLR
+ACLRN => inst9.ACLR
+ACLRN => inst10.ACLR
+D0 => inst2.IN0
+RESET => inst13.IN0
+CLK => inst.CLK
+CLK => inst8.CLK
+CLK => inst9.CLK
+CLK => inst10.CLK
+ENA => inst.ENA
+ENA => inst8.ENA
+ENA => inst9.ENA
+ENA => inst10.ENA
+Q1 <= inst8.DB_MAX_OUTPUT_PORT_TYPE
+D1 => inst3.IN0
+Q2 <= inst9.DB_MAX_OUTPUT_PORT_TYPE
+D2 => inst11.IN0
+Q3 <= inst10.DB_MAX_OUTPUT_PORT_TYPE
+D3 => inst12.IN0
+
+
+|Morse|counter8bits:inst2|register8bits:inst1|register4bits:inst1
+Q0 <= inst.DB_MAX_OUTPUT_PORT_TYPE
+ACLRN => inst.ACLR
+ACLRN => inst8.ACLR
+ACLRN => inst9.ACLR
+ACLRN => inst10.ACLR
+D0 => inst2.IN0
+RESET => inst13.IN0
+CLK => inst.CLK
+CLK => inst8.CLK
+CLK => inst9.CLK
+CLK => inst10.CLK
+ENA => inst.ENA
+ENA => inst8.ENA
+ENA => inst9.ENA
+ENA => inst10.ENA
+Q1 <= inst8.DB_MAX_OUTPUT_PORT_TYPE
+D1 => inst3.IN0
+Q2 <= inst9.DB_MAX_OUTPUT_PORT_TYPE
+D2 => inst11.IN0
+Q3 <= inst10.DB_MAX_OUTPUT_PORT_TYPE
+D3 => inst12.IN0
+
+
+|Morse|counter8bits:inst2|add1_8bits:inst
+z0 <= inst7.DB_MAX_OUTPUT_PORT_TYPE
+x0 => inst7.IN0
+x0 => inst1.IN0
+x0 => inst.IN0
+x0 => inst9.IN0
+x0 => inst10.IN0
+x0 => inst12.IN1
+x0 => inst11.IN2
+x0 => inst14.IN5
+z1 <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+x1 => inst1.IN1
+x1 => inst.IN1
+x1 => inst9.IN1
+x1 => inst10.IN1
+x1 => inst12.IN2
+x1 => inst11.IN1
+x1 => inst14.IN6
+z2 <= inst3.DB_MAX_OUTPUT_PORT_TYPE
+x2 => inst3.IN1
+x2 => inst9.IN2
+x2 => inst10.IN2
+x2 => inst12.IN0
+x2 => inst11.IN0
+x2 => inst14.IN3
+z3 <= inst5.DB_MAX_OUTPUT_PORT_TYPE
+x3 => inst5.IN1
+x3 => inst10.IN3
+x3 => inst12.IN3
+x3 => inst11.IN4
+x3 => inst14.IN4
+z4 <= inst6.DB_MAX_OUTPUT_PORT_TYPE
+x4 => inst6.IN1
+x4 => inst12.IN4
+x4 => inst11.IN3
+x4 => inst14.IN2
+z5 <= inst8.DB_MAX_OUTPUT_PORT_TYPE
+x5 => inst8.IN1
+x5 => inst12.IN5
+x5 => inst14.IN1
+z6 <= inst13.DB_MAX_OUTPUT_PORT_TYPE
+x6 => inst13.IN1
+x6 => inst14.IN0
+z7 <= inst15.DB_MAX_OUTPUT_PORT_TYPE
+x7 => inst15.IN1
+
+
+|Morse|BeaconAEs:inst1
+M <= inst3.DB_MAX_OUTPUT_PORT_TYPE
+C => inst1.IN0
+B => inst.IN0
+D => inst2.IN0
+A => inst2.IN1
+
+

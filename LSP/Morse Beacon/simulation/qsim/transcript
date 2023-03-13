@@ -1,0 +1,26 @@
+# do Morse.do 
+# ** Warning: (vlib-34) Library already exists at "work".
+# 
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module BeaconAE
+# 
+# Top level modules:
+# 	BeaconAE
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module BeaconAE_vlg_sample_tst
+# -- Compiling module BeaconAE_vlg_check_tst
+# -- Compiling module BeaconAE_vlg_vec_tst
+# 
+# Top level modules:
+# 	BeaconAE_vlg_vec_tst
+# vsim -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -c -t 1ps -novopt work.BeaconAE_vlg_vec_tst 
+# Loading work.BeaconAE_vlg_vec_tst
+# Loading work.BeaconAE
+# Loading cycloneive_ver.cycloneive_io_ibuf
+# Loading cycloneive_ver.cycloneive_io_obuf
+# Loading cycloneive_ver.cycloneive_lcell_comb
+# Loading work.BeaconAE_vlg_sample_tst
+# Loading work.BeaconAE_vlg_check_tst
+# Simulation passed !
+# ** Note: $finish    : Morse.vt(185)
+#    Time: 4 us  Iteration: 0  Instance: /BeaconAE_vlg_vec_tst/tb_out
