@@ -1,0 +1,10 @@
+function[mean, sd, grades] = stat_data(allgrades)
+mean = sum(allgrades)/length(allgrades)
+sd = std(allgrades)
+for i = 1:length(allgrades)
+    grades(i) = grade_classification(allgrades(i))
+end
+figure(1)
+graph = histogram(allgrades)
+xlabel("Integers between 0 and 100")
+ylabel("Frequency")
