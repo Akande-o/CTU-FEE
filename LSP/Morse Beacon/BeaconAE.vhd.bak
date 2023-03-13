@@ -1,0 +1,22 @@
+-- Quartus II VHDL Template Concurrent --
+-----------------------------------------
+-- After you choose "my_circuit" naming, store the code into "my_circuit.vhd" file!
+
+library ieee; use ieee.std_logic_1164.all; use ieee.numeric_std.all;
+
+entity BeaconAE is
+ port 
+  (
+   -- inputs and outputs
+   );
+end entity;
+
+architecture rtl of BeaconAE is
+
+-- Definitions of SIGNALS, constants, types, functions, and procedures
+
+begin -- architecture
+
+	-- Here, an implementation only by Concurrent Statements
+
+end architecture;
